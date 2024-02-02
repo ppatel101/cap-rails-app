@@ -4,7 +4,7 @@ lock "~> 3.18.0"
 set :application, 'cap-transparental-soluations'
 set :repo_url, 'git@github.com:ppatel101/cap-rails-app.git' # Edit this to match your repository
 set :branch, :master
-set :deploy_to, '/home/deploy/cap-transparental-soluations'
+set :deploy_to, '/home/ubuntu/cap-rails'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
