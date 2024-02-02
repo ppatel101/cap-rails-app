@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:ppatel101/cap-rails-app.git' # Edit this to match
 set :branch, :master
 set :deploy_to, '/home/ubuntu/cap-rails'
 set :pty, true
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml config/application.yml config/master.key}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 set :keep_releases, 5
 set :rbenv_type, :user
@@ -62,14 +62,14 @@ set :puma_preload_app, false
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-namespace :deploy do
-  namespace :check do
-    before :linked_files, :set_master_key do
-      on roles(:app), in: :sequence, wait: 10 do
-        unless test("[ -f #{shared_path}/config/master.key ]")
-          upload! 'config/master.key', "#{shared_path}/config/master.key"
-        end
-      end
-    end
-  end
-end
+# namespace :deploy do
+#   namespace :check do
+#     before :linked_files, :set_master_key do
+#       on roles(:app), in: :sequence, wait: 10 do
+#         unless test("[ -f #{shared_path}/config/master.key ]")
+#           upload! 'config/master.key', "#{shared_path}/config/master.key"
+#         end
+#       end
+#     end
+#   end
+# end
